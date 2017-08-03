@@ -13,8 +13,11 @@ database.
 
 ## Development
 
-To extend the service or customize it, either fork or clone this repository. We
-recommend that you create a [virtual environment](virtualenv) to isolate the
+To extend the service or customize it, either fork or clone this repository.
+
+### Installation
+
+We recommend that you create a [virtual environment](virtualenv) to isolate the
 Python interpreter and all dependencies from your system Python or any other
 projects you're working on.
 
@@ -31,6 +34,12 @@ pip install -r requirements.txt
 
 After that, you can hack away and make any changes you require to make the code
 work for you. 😊
+
+### Running the server
+
+During development, you can run the server by simply starting the app:
+
+    FLASK_APP=app.py flask run
 
 ## License
 
