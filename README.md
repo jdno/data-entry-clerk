@@ -11,6 +11,36 @@ Most external services allow data to be shared via [webhooks][webhook]. The DEC
 provides an endpoint that accepts such webhooks and stores their payload in a
 database.
 
+## Development
+
+To extend the service or customize it, either fork or clone this repository.
+
+### Installation
+
+We recommend that you create a [virtual environment](virtualenv) to isolate the
+Python interpreter and all dependencies from your system Python or any other
+projects you're working on.
+
+```bash
+virtualenv --python=$(which python3) .venv
+source .venv/bin/activate
+```
+
+Then, install DEC's dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+After that, you can hack away and make any changes you require to make the code
+work for you. 😊
+
+### Running the server
+
+During development, you can run the server by simply starting the app:
+
+    FLASK_APP=app.py flask run
+
 ## License
 
 Copyright (c) 2017 Automatiqa
@@ -33,4 +63,5 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+[virtualenv]: http://python-guide-pt-br.readthedocs.io/en/latest/dev/virtualenvs/
 [webhook]: https://en.wikipedia.org/wiki/Webhook
