@@ -9,6 +9,9 @@ from flask import Flask, jsonify
 
 app = Flask(__name__)
 
+# Load the default configuration
+app.config.from_object('config.default')
+
 
 @app.route("/")
 def root():
