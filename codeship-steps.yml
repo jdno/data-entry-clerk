@@ -1,0 +1,9 @@
+- type: parallel
+  name: "Test application"
+  steps:
+    - service: app
+      name: "Lint code"
+      command: flake8
+    - service: app
+      name: "Test app"
+      command: pytest

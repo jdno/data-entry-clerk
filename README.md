@@ -1,5 +1,7 @@
 # Data Entry Clerk
 
+[![Codeship](https://img.shields.io/codeship/00e3e560-5bf2-0135-71f7-12b712633443.svg)](https://app.codeship.com/projects/237709/)
+
 > Hello, I'm your friendly _data entry clerk_. I take whatever data you give me
 and store them in your database for later processing.
 
