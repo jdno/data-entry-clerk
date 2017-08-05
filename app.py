@@ -19,7 +19,7 @@ app.config.from_object(
 
 
 @app.route("/")
-def root():
+def status():
     """
     Endpoint for status checks.
 

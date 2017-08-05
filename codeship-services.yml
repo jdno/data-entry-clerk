@@ -1,0 +1,4 @@
+app:
+  build: .
+  environment:
+    FLASK_ENV: development
