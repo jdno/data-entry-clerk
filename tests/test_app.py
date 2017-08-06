@@ -14,7 +14,7 @@ def test_status_ok(app):
     Under normal conditions, the status check is supposed to return HTTP 200
     OK.
 
-    :param app: The Flask app
+    :param app: The Flask dec
     """
     response = app.test_client().get('/')
     body = json.loads(response.get_data())

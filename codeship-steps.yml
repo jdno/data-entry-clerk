@@ -5,5 +5,5 @@
       name: "Lint code"
       command: flake8
     - service: app
-      name: "Test app"
-      command: pytest
+      name: "Test dec"
+      command: python setup.py test
