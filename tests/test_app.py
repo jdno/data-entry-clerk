@@ -6,6 +6,8 @@ this module ensure that the endpoints process requests correctly.
 """
 import json
 
+import time
+
 
 def test_status_ok(app):
     """
@@ -21,3 +23,20 @@ def test_status_ok(app):
 
     assert '200 OK' == response.status
     assert 'ok' == body['status']
+
+
+def test_process(app):
+    data = {
+        "name": "Data Entry Clerk",
+        "message": "Running tests",
+        "timestamp": time.time()
+    }
+
+    response = app.test_client().post('/incoming',
+                                      data=json.dumps(data),
+                                      content_type='application/json')
+    assert '200 OK' == response.status
+
+    body = json.loads(response.get_data())
+    assert 'dec_id' in body
+    assert 'dec_created_at' in body

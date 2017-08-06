@@ -3,4 +3,6 @@ Flask==0.12.2
 itsdangerous==0.24
 Jinja2==2.9.6
 MarkupSafe==1.0
+pytz==2017.2
+simplejson==3.11.1
 Werkzeug==0.12.2
