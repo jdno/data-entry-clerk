@@ -51,8 +51,13 @@ def process():
     data["dec_id"] = str(uuid4())
     data["dec_created_at"] = str(datetime.utcnow().replace(tzinfo=pytz.utc))
 
-    dynamodb = boto3.resource('dynamodb',
-                              endpoint_url=app.config['DYNAMODB_ENDPOINT'])
+    dynamodb = boto3.resource(
+        'dynamodb',
+        endpoint_url=app.config['DYNAMODB_ENDPOINT'],
+        aws_access_key_id=app.config['AWS_ACCESS_KEY_ID'],
+        aws_secret_access_key=app.config['AWS_SECRET_ACCESS_KEY'],
+        region_name=app.config['AWS_REGION']
+    )
     table = dynamodb.Table(app.config['DYNAMODB_TABLE'])
 
     try:

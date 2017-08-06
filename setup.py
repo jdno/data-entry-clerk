@@ -11,6 +11,7 @@ setup(
     packages=['dec'],
     include_package_data=True,
     install_requires=[
+        'boto3',
         'flask',
         'pytz',
         'simplejson'
