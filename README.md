@@ -14,6 +14,10 @@ Most external services allow data to be shared via [webhooks][webhook]. The DEC
 provides an endpoint that accepts such webhooks and stores their payload in a
 database.
 
+While the application is set up in a way that allows different deployments
+(e.g. via Docker), the initial implementation is made with [AWS Lambda][lambda]
+and [DynamoDB] in mind.
+
 ## Development
 
 To extend the service or customize it, either fork or clone this repository.
@@ -37,6 +41,18 @@ pip install -r requirements.txt
 
 After that, you can hack away and make any changes you require to make the code
 work for you. 😊
+
+### DynamoDB
+
+The default backend for DEC is Amazon's [DynamoDB]. For development and
+testing, you can run an instance locally. First, go to the following page and
+download the package from your nearest region:
+
+[Setting Up DynamoDB Local](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html#DynamoDBLocal.DownloadingAndRunning)
+
+Then, extract its contents into the `dynamodb` directory. Once you've done
+this, you can use the script `start_dynamodb.sh` in `scripts` to run the
+server.
 
 ### Running the server
 
@@ -66,5 +82,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+[dynamodb]: https://aws.amazon.com/dynamodb/
+[lambda]: https://aws.amazon.com/lambda/
 [virtualenv]: http://python-guide-pt-br.readthedocs.io/en/latest/dev/virtualenvs/
 [webhook]: https://en.wikipedia.org/wiki/Webhook
