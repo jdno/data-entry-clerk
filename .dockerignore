@@ -1,2 +1,5 @@
+**/*.pyc
 .cache
+.eggs
 .gitignore
+data_entry_clerk.egg-info
