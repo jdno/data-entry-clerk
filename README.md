@@ -2,6 +2,7 @@
 
 [![Codeship](https://img.shields.io/codeship/00e3e560-5bf2-0135-71f7-12b712633443.svg)](https://app.codeship.com/projects/237709/)
 [![Code Climate](https://img.shields.io/codeclimate/github/Automatiqa/data-entry-clerk.svg)](https://codeclimate.com/github/Automatiqa/data-entry-clerk)
+[![Docker Build Status](https://img.shields.io/docker/build/automatiqa/data-entry-clerk.svg)](https://hub.docker.com/r/automatiqa/data-entry-clerk/)
 
 > Hello, I'm your friendly _data entry clerk_. I take whatever data you give me
 and store them in your database for later processing.
