@@ -54,6 +54,9 @@ Then, extract its contents into the `dynamodb` directory. Once you've done
 this, you can use the script `start_dynamodb.sh` in `scripts` to run the
 server.
 
+**Note:** When starting the database for the first time, make sure to run
+`create_table.sh` in a different terminal as well.
+
 ### Running the server
 
 During development, you can run the server by simply starting the app:
