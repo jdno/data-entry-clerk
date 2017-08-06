@@ -16,7 +16,6 @@ RUN mkdir -p /opt/app
 WORKDIR /opt/app
 
 COPY . .
-RUN python setup.py install
 
 EXPOSE 5000
 

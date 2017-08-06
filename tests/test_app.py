@@ -6,6 +6,8 @@ this module ensure that the endpoints process requests correctly.
 """
 import json
 
+import time
+
 
 def test_status_ok(app):
     """
@@ -14,10 +16,35 @@ def test_status_ok(app):
     Under normal conditions, the status check is supposed to return HTTP 200
     OK.
 
-    :param app: The Flask dec
+    :param app: The Flask app
     """
     response = app.test_client().get('/')
     body = json.loads(response.get_data())
 
     assert '200 OK' == response.status
     assert 'ok' == body['status']
+
+
+def test_process(app):
+    """
+    Test the endpoint processing incoming webhooks.
+
+    The endpoint parses the request and stores its payload in a DynamoDB
+    table.
+
+    :param app: The Flask app
+    """
+    data = {
+        "name": "Data Entry Clerk",
+        "message": "Running tests",
+        "timestamp": time.time()
+    }
+
+    response = app.test_client().post('/incoming',
+                                      data=json.dumps(data),
+                                      content_type='application/json')
+    assert '200 OK' == response.status
+
+    body = json.loads(response.get_data())
+    assert 'dec_id' in body
+    assert 'dec_created_at' in body

@@ -4,6 +4,16 @@
     - service: app
       name: "Lint code"
       command: flake8
-    - service: app
-      name: "Test dec"
-      command: python setup.py test
+    - type: serial
+      name: "Test app"
+      steps:
+        - name: "Create table"
+          service: aws
+          command: "/scripts/wait-for.sh dynamodb:8000 -t 60 -- aws dynamodb create-table --endpoint-url=http://dynamodb:8000 --attribute-definitions=AttributeName=dec_id,AttributeType=S --table-name=automatiqa-dec --key-schema=AttributeName=dec_id,KeyType=HASH --provisioned-throughput=ReadCapacityUnits=1,WriteCapacityUnits=1"
+        - name: "List tables"
+          service: aws
+          command: "/scripts/wait-for.sh dynamodb:8000 -t 60 -- aws dynamodb list-tables --endpoint-url=http://dynamodb:8000"
+        - name: "Run tests"
+          service: app
+          entrypoint: sh
+          command: "./scripts/wait-for.sh dynamodb:8000 -t 60 -- python setup.py test"

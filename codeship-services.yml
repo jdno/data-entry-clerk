@@ -1,4 +1,23 @@
-app:
-  build: .
-  environment:
-    FLASK_ENV: development
+version: '3'
+services:
+  app:
+    build: .
+    environment:
+      FLASK_ENV: test
+    links:
+      - dynamodb
+  aws:
+    image: cgswong/aws
+    entrypoint: sh
+    environment:
+      - AWS_ACCESS_KEY_ID=foo
+      - AWS_SECRET_ACCESS_KEY=bar
+      - AWS_DEFAULT_REGION=eu-west-1
+    links:
+      - dynamodb
+    volumes:
+      - ./scripts:/scripts
+  dynamodb:
+    image: deangiberson/aws-dynamodb-local
+    volumes:
+      - ./dynamodb:/var/dynamodb_local
