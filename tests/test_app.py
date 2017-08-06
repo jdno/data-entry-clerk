@@ -16,7 +16,7 @@ def test_status_ok(app):
     Under normal conditions, the status check is supposed to return HTTP 200
     OK.
 
-    :param app: The Flask dec
+    :param app: The Flask app
     """
     response = app.test_client().get('/')
     body = json.loads(response.get_data())
@@ -26,6 +26,14 @@ def test_status_ok(app):
 
 
 def test_process(app):
+    """
+    Test the endpoint processing incoming webhooks.
+
+    The endpoint parses the request and stores its payload in a DynamoDB
+    table.
+
+    :param app: The Flask app
+    """
     data = {
         "name": "Data Entry Clerk",
         "message": "Running tests",
